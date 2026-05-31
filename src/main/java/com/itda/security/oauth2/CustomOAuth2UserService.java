@@ -1,7 +1,7 @@
 package com.itda.security.oauth2;
 
-import com.itda.entity.User;
-import com.itda.repository.UserRepository;
+import com.itda.domain.auth.entity.User;
+import com.itda.domain.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;

@@ -1,4 +1,4 @@
-package com.itda.entity;
+package com.itda.domain.auth.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

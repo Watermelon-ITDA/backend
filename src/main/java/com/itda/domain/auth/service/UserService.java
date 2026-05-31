@@ -1,7 +1,7 @@
-package com.itda.service;
+package com.itda.domain.auth.service;
 
-import com.itda.entity.User;
-import com.itda.repository.UserRepository;
+import com.itda.domain.auth.entity.User;
+import com.itda.domain.auth.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

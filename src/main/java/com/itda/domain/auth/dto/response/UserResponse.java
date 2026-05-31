@@ -1,6 +1,6 @@
-package com.itda.dto.response;
+package com.itda.domain.auth.dto.response;
 
-import com.itda.entity.User;
+import com.itda.domain.auth.entity.User;
 import lombok.Builder;
 
 @Builder

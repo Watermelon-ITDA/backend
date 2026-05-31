@@ -1,8 +1,8 @@
-package com.itda.controller;
+package com.itda.domain.auth.controller;
 
-import com.itda.dto.response.UserResponse;
-import com.itda.entity.User;
-import com.itda.service.UserService;
+import com.itda.domain.auth.dto.response.UserResponse;
+import com.itda.domain.auth.entity.User;
+import com.itda.domain.auth.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

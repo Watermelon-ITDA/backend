@@ -59,14 +59,6 @@ dependencies {
     testImplementation 'org.springframework.security:spring-security-test'
 }
 
-bootRun {
-    environment 'DB_USERNAME', findProperty('DB_USERNAME')
-    environment 'DB_PASSWORD', findProperty('DB_PASSWORD')
-    environment 'GOOGLE_CLIENT_ID', findProperty('GOOGLE_CLIENT_ID')
-    environment 'GOOGLE_CLIENT_SECRET', findProperty('GOOGLE_CLIENT_SECRET')
-    environment 'JWT_SECRET', findProperty('JWT_SECRET')
-}
-
 tasks.named('test') {
     useJUnitPlatform()
 }

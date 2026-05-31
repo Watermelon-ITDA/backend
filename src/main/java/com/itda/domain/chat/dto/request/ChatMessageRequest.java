@@ -1,4 +1,4 @@
-package com.itda.dto.request;
+package com.itda.domain.chat.dto.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

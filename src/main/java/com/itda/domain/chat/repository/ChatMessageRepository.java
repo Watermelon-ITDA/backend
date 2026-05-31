@@ -1,6 +1,6 @@
-package com.itda.repository;
+package com.itda.domain.chat.repository;
 
-import com.itda.entity.ChatMessage;
+import com.itda.domain.chat.entity.ChatMessage;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

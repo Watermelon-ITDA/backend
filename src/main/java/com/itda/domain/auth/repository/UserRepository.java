@@ -1,6 +1,6 @@
-package com.itda.repository;
+package com.itda.domain.auth.repository;
 
-import com.itda.entity.User;
+import com.itda.domain.auth.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

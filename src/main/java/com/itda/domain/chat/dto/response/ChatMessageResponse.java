@@ -1,6 +1,6 @@
-package com.itda.dto.response;
+package com.itda.domain.chat.dto.response;
 
-import com.itda.entity.ChatMessage;
+import com.itda.domain.chat.entity.ChatMessage;
 import lombok.Builder;
 
 import java.time.LocalDateTime;
