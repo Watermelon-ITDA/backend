@@ -1,9 +1,9 @@
-package com.itda.controller;
+package com.itda.domain.chat.controller;
 
-import com.itda.dto.request.ChatMessageRequest;
-import com.itda.dto.response.ChatMessageResponse;
-import com.itda.entity.User;
-import com.itda.service.ChatService;
+import com.itda.domain.chat.dto.request.ChatMessageRequest;
+import com.itda.domain.chat.dto.response.ChatMessageResponse;
+import com.itda.domain.auth.entity.User;
+import com.itda.domain.chat.service.ChatService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;

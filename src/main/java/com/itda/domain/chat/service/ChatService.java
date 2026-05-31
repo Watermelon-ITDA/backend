@@ -1,9 +1,9 @@
-package com.itda.service;
+package com.itda.domain.chat.service;
 
-import com.itda.dto.request.ChatMessageRequest;
-import com.itda.dto.response.ChatMessageResponse;
-import com.itda.entity.ChatMessage;
-import com.itda.repository.ChatMessageRepository;
+import com.itda.domain.chat.dto.request.ChatMessageRequest;
+import com.itda.domain.chat.dto.response.ChatMessageResponse;
+import com.itda.domain.chat.entity.ChatMessage;
+import com.itda.domain.chat.repository.ChatMessageRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

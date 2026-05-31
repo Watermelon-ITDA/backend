@@ -1,4 +1,4 @@
-package com.itda.entity;
+package com.itda.domain.chat.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
