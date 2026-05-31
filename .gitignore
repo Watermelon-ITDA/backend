@@ -32,5 +32,5 @@ build/
 ### VS Code ###
 .vscode/
 
-gradle.properties
 .gradle
+src/main/resources/application.properties
