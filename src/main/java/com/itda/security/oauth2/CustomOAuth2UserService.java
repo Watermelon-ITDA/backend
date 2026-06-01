@@ -35,6 +35,8 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         log.info("구글 로그인 시도 - email: {}", email);
 
         // DB에 유저가 있으면 프로필 업데이트, 없으면 신규 가입
+        boolean[] isNewUser = {false};
+
         User user = userRepository.findByEmail(email)
                 .map(existingUser -> {
                     existingUser.updateProfileImage(picture);
@@ -42,6 +44,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                     return existingUser;
                 })
                 .orElseGet(() -> {
+                    isNewUser[0] = true;
                     User newUser = User.builder()
                             .email(email)
                             .nickname(name)
@@ -53,14 +56,15 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
                     return userRepository.save(newUser);
                 });
 
-        // userId를 attributes에 추가해서 OAuth2SuccessHandler에서 사용
+        // userId, isNew를 attributes에 추가해서 OAuth2SuccessHandler에서 사용
         return new DefaultOAuth2User(
                 oAuth2User.getAuthorities(),
                 Map.of(
                         "id", user.getId(),
                         "email", email,
                         "name", name,
-                        "picture", picture != null ? picture : ""
+                        "picture", picture != null ? picture : "",
+                        "isNew", isNewUser[0]
                 ),
                 "email"
         );
