@@ -33,14 +33,14 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
         OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
         String userId = (String) oAuth2User.getAttribute("id");
         String email = (String) oAuth2User.getAttribute("email");
+        Boolean isNew = (Boolean) oAuth2User.getAttribute("isNew");
 
         // JWT 발급
         String token = jwtUtil.generateToken(userId, email);
 
-        log.info("OAuth2 로그인 성공 - userId: {}, token 발급 완료", userId);
+        log.info("OAuth2 로그인 성공 - userId: {}, isNew: {}, token 발급 완료", userId, isNew);
 
-        // 프론트엔드로 리다이렉트 (토큰을 쿼리 파라미터로 전달)
-        // 프론트에서 /oauth2/callback?token=xxx 로 받아서 localStorage에 저장
-        response.sendRedirect(redirectUri + "?token=" + token);
+        // 프론트엔드로 리다이렉트 (토큰, 신규 여부를 쿼리 파라미터로 전달)
+        response.sendRedirect(redirectUri + "?token=" + token + "&isNew=" + isNew);
     }
 }
