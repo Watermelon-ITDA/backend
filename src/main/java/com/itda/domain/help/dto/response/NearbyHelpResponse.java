@@ -1,17 +1,18 @@
-package com.itda.domain.help.dto.request;
+package com.itda.domain.help.dto.response;
 
 import com.itda.domain.help.entity.Role;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 @Getter
-@NoArgsConstructor
-public class TravlerHelpRequest {
-    private String helpType;
+@AllArgsConstructor
+public class NearbyHelpResponse {
+    private String userId;
+    private String type;
     private String address;
     private Double latitude;
     private Double longitude;
+    private Double distance;
     private Role role;
     private String content;
-    private Boolean active;
 }

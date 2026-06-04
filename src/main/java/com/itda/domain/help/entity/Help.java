@@ -6,10 +6,10 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "travler_help")
+@Table(name = "help")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class TravlerHelp {
+public class Help {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,20 +30,20 @@ public class TravlerHelp {
     private Double longitude;
 
     @Enumerated(EnumType.STRING)
-    private String role;
+    private Role role;
 
     private String content;
 
     private Boolean active;
 
-    public TravlerHelp(String userId,
-                       String type,
-                       String address,
-                       Double latitude,
-                       Double longitude,
-                       String role,
-                       String content,
-                       Boolean active
+    public Help(String userId,
+                String type,
+                String address,
+                Double latitude,
+                Double longitude,
+                Role role,
+                String content,
+                Boolean active
     ) {
         this.userId = userId;
         this.type = type;

@@ -1,19 +1,26 @@
 package com.itda.domain.help.service;
 
 import com.itda.domain.help.dto.request.TravlerHelpRequest;
-import com.itda.domain.help.entity.TravlerHelp;
-import com.itda.domain.help.repository.TravlerHelpRepository;
+import com.itda.domain.help.dto.response.NearbyHelpResponse;
+import com.itda.domain.help.entity.Help;
+import com.itda.domain.help.entity.Role;
+import com.itda.domain.help.repository.HelpRepository;
+import com.itda.domain.help.util.DistanceCalculator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Comparator;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class HelpService {
 
-    private final TravlerHelpRepository travlerHelpRepository;
+    private final HelpRepository helpRepository;
+    private final DistanceCalculator distanceCalculator;
 
     public void createHelp(String userId, TravlerHelpRequest req) {
-        TravlerHelp travlerHelp = new TravlerHelp(
+        Help help = new Help(
                 userId,
                 req.getHelpType(),
                 req.getAddress(),
@@ -23,6 +30,41 @@ public class HelpService {
                 req.getContent(),
                 req.getActive()
         );
-        travlerHelpRepository.save(travlerHelp);
+        helpRepository.save(help);
+    }
+
+    public List<NearbyHelpResponse> findNearby(Role role, double lat, double lng) {
+        return helpRepository.findByRole(role)
+                .stream()
+                .map(help -> {
+
+                    double distance =
+                            distanceCalculator.calculate(
+                                    lat,
+                                    lng,
+                                    help.getLatitude(),
+                                    help.getLongitude()
+                            );
+
+                    return new NearbyHelpResponse(
+                            help.getUserId(),
+                            help.getType(),
+                            help.getAddress(),
+                            help.getLatitude(),
+                            help.getLongitude(),
+                            distance,
+                            help.getRole(),
+                            help.getContent()
+                    );
+                })
+                .filter(item -> item.getDistance() <= 3) // 3km 이내
+                .sorted(
+                        Comparator.comparing(
+                                NearbyHelpResponse::getDistance
+                        )
+                )
+                .limit(20)
+                .toList();
+
     }
 }
