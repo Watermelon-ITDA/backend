@@ -10,4 +10,7 @@ public class TravlerHelpRequest {
     private String address;
     private Double latitude;
     private Double longitude;
+    private String role;
+    private String content;
+    private Boolean active;
 }

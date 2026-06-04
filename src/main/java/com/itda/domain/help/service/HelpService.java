@@ -18,7 +18,10 @@ public class HelpService {
                 req.getHelpType(),
                 req.getAddress(),
                 req.getLatitude(),
-                req.getLongitude()
+                req.getLongitude(),
+                req.getRole(),
+                req.getContent(),
+                req.getActive()
         );
         travlerHelpRepository.save(travlerHelp);
     }

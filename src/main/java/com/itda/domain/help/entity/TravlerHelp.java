@@ -29,12 +29,30 @@ public class TravlerHelp {
     @Column(name = "longitude")
     private Double longitude;
 
-    public TravlerHelp(String userId, String type, String address, Double latitude, Double longitude) {
+    @Enumerated(EnumType.STRING)
+    private String role;
+
+    private String content;
+
+    private Boolean active;
+
+    public TravlerHelp(String userId,
+                       String type,
+                       String address,
+                       Double latitude,
+                       Double longitude,
+                       String role,
+                       String content,
+                       Boolean active
+    ) {
         this.userId = userId;
         this.type = type;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.role = role;
+        this.content = content;
+        this.active = active;
     }
 }
 
